@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discover Pakistan — Land of Wonders</title>
+  <meta name="description" content="Explore Pakistan's breathtaking landscapes, ancient civilizations, and vibrant culture." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇵🇰</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+
+<!-- Enhanced Cursor -->
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+<div class="cursor-dot"></div>
+<canvas id="cursor-trail"></canvas>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="loader-logo">Pakistan</div>
+  <p class="loader-subtitle">Land of Wonders</p>
+  <div class="loader-bar"><div class="loader-progress"></div></div>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <a href="#hero" class="nav-logo">Discover <span>Pakistan</span></a>
+  <ul class="nav-links">
+    <li><a href="#intro">About</a></li>
+    <li><a href="#cities">Cities</a></li>
+    <li><a href="#experiences">Experiences</a></li>
+    <li><a href="#featured">Places</a></li>
+    <li><a href="#pakistan-map">Map</a></li>
+    <li><a href="#cuisine">Cuisine</a></li>
+    <li><a href="#seasons">Plan</a></li>
+    <li><a href="#gallery" class="nav-cta">Gallery</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ==================== SECTION 1: HERO ==================== -->
+<section id="hero">
+  <canvas id="hero-3d"></canvas>
+
+  <!-- Parallax Image Layers -->
+  <div class="hero-bg-layer hero-bg-back"></div>
+  <div class="hero-bg-layer hero-bg-front"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-vignette"></div>
+
+  <!-- Animated Frame -->
+  <div class="hero-frame">
+    <div class="hero-frame-line hero-frame-top"></div>
+    <div class="hero-frame-line hero-frame-bottom"></div>
+    <div class="hero-frame-line hero-frame-left"></div>
+    <div class="hero-frame-line hero-frame-right"></div>
+  </div>
+
+  <!-- Vertical Side Text -->
+  <div class="hero-vertical-text">PAKISTAN</div>
+
+  <!-- Animated Glowing Orb -->
+  <div class="hero-orb"></div>
+
+  <!-- Floating Particles -->
+  <div class="hero-particles-layer">
+    <div class="hero-particle-float" style="--delay:0s;--x:15%;--dur:7s"></div>
+    <div class="hero-particle-float" style="--delay:1s;--x:35%;--dur:9s"></div>
+    <div class="hero-particle-float" style="--delay:2s;--x:55%;--dur:6s"></div>
+    <div class="hero-particle-float" style="--delay:0.5s;--x:75%;--dur:8s"></div>
+    <div class="hero-particle-float" style="--delay:3s;--x:90%;--dur:10s"></div>
+    <div class="hero-particle-float" style="--delay:1.5s;--x:25%;--dur:7.5s"></div>
+    <div class="hero-particle-float" style="--delay:2.5s;--x:65%;--dur:8.5s"></div>
+    <div class="hero-particle-float" style="--delay:0.8s;--x:45%;--dur:6.5s"></div>
+    <div class="hero-particle-float" style="--delay:1.2s;--x:10%;--dur:11s"></div>
+    <div class="hero-particle-float" style="--delay:3.5s;--x:80%;--dur:7.2s"></div>
+  </div>
+
+  <!-- Hero Layout: Left Content + Right Feature -->
+  <div class="hero-layout">
+
+    <!-- LEFT: Main Content -->
+    <div class="hero-content">
+      <div class="hero-side-info">
+        <span class="hero-coord">33.7294° N, 73.0931° E</span>
+        <span class="hero-divider-v"></span>
+        <span class="hero-location">Islamabad, Pakistan</span>
+      </div>
+
+      <div class="hero-accent-line"></div>
+
+      <p class="hero-tag">
+        <span class="hero-tag-line"></span>
+        <span class="hero-tag-text">Land of Wonders • Five Civilizations</span>
+      </p>
+
+      <h1 class="hero-title">
+        <span class="hero-title-line">
+          <span class="hero-title-word" style="--i:0">D</span><span class="hero-title-word" style="--i:1">i</span><span class="hero-title-word" style="--i:2">s</span><span class="hero-title-word" style="--i:3">c</span><span class="hero-title-word" style="--i:4">o</span><span class="hero-title-word" style="--i:5">v</span><span class="hero-title-word" style="--i:6">e</span><span class="hero-title-word" style="--i:7">r</span>
+        </span>
+        <span class="hero-title-line hero-title-em">
+          <span class="hero-title-word" style="--i:8">P</span><span class="hero-title-word" style="--i:9">a</span><span class="hero-title-word" style="--i:10">k</span><span class="hero-title-word" style="--i:11">i</span><span class="hero-title-word" style="--i:12">s</span><span class="hero-title-word" style="--i:13">t</span><span class="hero-title-word" style="--i:14">a</span><span class="hero-title-word" style="--i:15">n</span>
+        </span>
+      </h1>
+
+      <p class="hero-desc">From the world's highest peaks to ancient ruins, from lush valleys to golden deserts — Pakistan holds more wonders than a lifetime can explore.</p>
+
+      <div class="hero-actions">
+        <a href="#cities" class="btn-primary magnetic"><span>Explore Destinations</span></a>
+        <a href="#experiences" class="btn-ghost magnetic">
+          <span class="arrow"></span>
+          Our Experiences
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT: Feature Card + Stats -->
+    <div class="hero-right">
+      <div class="hero-feature-card">
+        <div class="hero-feature-badge">Featured Destination</div>
+        <h3 class="hero-feature-title">Faisal Mosque</h3>
+        <p class="hero-feature-text">Largest mosque in South Asia — a masterpiece of modern Islamic architecture nestled against the Margalla Hills.</p>
+        <div class="hero-feature-stats">
+          <div class="hero-feature-stat"><span>📍</span> Islamabad</div>
+          <div class="hero-feature-stat"><span>🕌</span> Built 1986</div>
+        </div>
+      </div>
+
+      <div class="hero-stats-bar">
+        <div class="hero-stat"><span class="hero-stat-num">8,611m</span><span class="hero-stat-label">K2 Peak</span></div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat"><span class="hero-stat-num">7,253</span><span class="hero-stat-label">Glaciers</span></div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat"><span class="hero-stat-num">5,000+</span><span class="hero-stat-label">Years of History</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="hero-scroll-hint">
+    <div class="scroll-mouse">
+      <div class="scroll-wheel"></div>
+    </div>
+    <span class="scroll-text">Scroll to explore</span>
+  </div>
+</section>
+
+<!-- Divider -->
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-diamond">&#9671;</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ==================== SECTION 2: INTRO ==================== -->
+<section id="intro">
+  <div class="intro-left">
+    <p class="section-label reveal">Our Story</p>
+    <h2 class="section-title reveal delay-1">A land that<br>rewrites every<br><em>expectation</em></h2>
+    <p class="intro-text reveal delay-2">Pakistan is home to six of the world's fourteen eight-thousanders, three of the longest glaciers outside the polar regions, and a civilizational heritage stretching back 5,000 years to Mohenjo-daro.</p>
+    <p class="intro-text reveal delay-3">Yet beyond the peaks and ruins, it is the warmth of its people — the most generous hosts on earth — that leaves every traveler forever changed.</p>
+    <div class="intro-stats">
+      <div class="reveal delay-1">
+        <div class="stat-number" data-val="8" data-suffix="+">0+</div>
+        <div class="stat-label">Eight-Thousanders</div>
+      </div>
+      <div class="reveal delay-2">
+        <div class="stat-number" data-val="7500" data-suffix="">0</div>
+        <div class="stat-label">Years of Civilization</div>
+      </div>
+      <div class="reveal delay-3">
+        <div class="stat-number" data-val="500" data-suffix="+">0+</div>
+        <div class="stat-label">UNESCO World Heritage Sites</div>
+      </div>
+    </div>
+  </div>
+  <div class="intro-right reveal-right">
+    <img class="intro-img-main" src="pictures/DJI_0160.png" alt="Badshahi Mosque" />
+    <img class="intro-img-accent" src="pictures/saifm1.jpeg" alt="Hunza Valley" />
+    <div class="intro-quote-badge"><p>"Once you've seen the mountains of Pakistan, every other landscape seems incomplete."</p></div>
+  </div>
+</section>
+
+<!-- Floating Text Marquee -->
+<div class="floating-text-band">
+  <div class="floating-text-track">
+    <span>K2 ✦ Hunza Valley ✦ Badshahi Mosque ✦ Deosai Plains ✦ Fairy Meadows ✦ Mohenjo-daro ✦ Karakoram Highway ✦ Attabad Lake ✦ Swat Valley ✦ Skardu ✦&nbsp;</span>
+    <span>K2 ✦ Hunza Valley ✦ Badshahi Mosque ✦ Deosai Plains ✦ Fairy Meadows ✦ Mohenjo-daro ✦ Karakoram Highway ✦ Attabad Lake ✦ Swat Valley ✦ Skardu ✦&nbsp;</span>
+  </div>
+</div>
+
+<!-- ==================== SECTION 3: CITIES ==================== -->
+<section id="cities">
+  <div class="cities-header">
+    <div>
+      <p class="section-label reveal">Explore Cities</p>
+      <h2 class="section-title reveal delay-1">Pakistan's<br>greatest<br><em>destinations</em></h2>
+    </div>
+    <div class="cities-header-right reveal-right">
+      <p class="cities-desc">From imperial Lahore to the alpine Hunza, each city is a world unto itself — a layering of history, cuisine, and unforgettable hospitality.</p>
+    </div>
+  </div>
+  <div class="cities-track-wrapper">
+    <div class="cities-track">
+<div class="city-card" data-aos="fade-right"><img class="city-card-img" src="pictures/lahour.jpg" alt="Lahore" /><div class="city-card-overlay"></div><div class="city-card-body"><div class="city-number">01</div><h3 class="city-name">Lahore</h3><p class="city-province">Punjab Province</p><p class="city-desc">The cultural heart. Mughal grandeur, Sufi poetry, finest food.</p><span class="city-tag">Culture &amp; History</span></div></div>
+      <div class="city-card" data-aos="fade-right"><img class="city-card-img" src="pictures/hunza.jpg" alt="Hunza" /><div class="city-card-overlay"></div><div class="city-card-body"><div class="city-number">02</div><h3 class="city-name">Hunza Valley</h3><p class="city-province">Gilgit-Baltistan</p><p class="city-desc">Paradise ringed by Rakaposhi. Cherry blossoms and warmth.</p><span class="city-tag">Mountain Paradise</span></div></div>
+      <div class="city-card" data-aos="fade-right"><img class="city-card-img" src="pictures/islamabad.jpg" alt="Islamabad" /><div class="city-card-overlay"></div><div class="city-card-body"><div class="city-number">03</div><h3 class="city-name">Islamabad</h3><p class="city-province">Federal Capital</p><p class="city-desc">World's second most beautiful capital. Margalla Hills.</p><span class="city-tag">Capital City</span></div></div>
+      <div class="city-card" data-aos="fade-right"><img class="city-card-img" src="pictures/skerdu.jpg" alt="Skardu" /><div class="city-card-overlay"></div><div class="city-card-body"><div class="city-number">04</div><h3 class="city-name">Skardu</h3><p class="city-province">Gilgit-Baltistan</p><p class="city-desc">Gateway to K2. Base camp for world's most dramatic expeditions.</p><span class="city-tag">Adventure Base</span></div></div>
+      <div class="city-card" data-aos="fade-right"><img class="city-card-img" src="pictures/peshawer.jpg" alt="Peshawar" /><div class="city-card-overlay"></div><div class="city-card-body"><div class="city-number">05</div><h3 class="city-name">Peshawar</h3><p class="city-province">Khyber Pakhtunkhwa</p><p class="city-desc">One of oldest living cities. 2,500 years of tales.</p><span class="city-tag">Ancient Heritage</span></div></div>
+      <div class="city-card" data-aos="fade-right"><img class="city-card-img" src="pictures/swat.jpg" alt="Swat" /><div class="city-card-overlay"></div><div class="city-card-body"><div class="city-number">06</div><h3 class="city-name">Swat Valley</h3><p class="city-province">Khyber Pakhtunkhwa</p><p class="city-desc">"Switzerland of Pakistan" — emerald rivers, Buddhist ruins.</p><span class="city-tag">Scenic Valley</span></div></div>
+      <div class="city-card" data-aos="fade-right"><img class="city-card-img" src="pictures/karachi.jpg" alt="Karachi" /><div class="city-card-overlay"></div><div class="city-card-body"><div class="city-number">07</div><h3 class="city-name">Karachi</h3><p class="city-province">Sindh Province</p><p class="city-desc">Megacity by the sea. Chaotic, glorious fusion of cultures.</p><span class="city-tag">Coastal Metropolis</span></div></div>
+      <div class="city-card" data-aos="fade-right"><img class="city-card-img" src="pictures/naran.jpg" alt="Naran" /><div class="city-card-overlay"></div><div class="city-card-body"><div class="city-number">08</div><h3 class="city-name">Naran &amp; Kaghan</h3><p class="city-province">Khyber Pakhtunkhwa</p><p class="city-desc">Mystical Lake Saif ul Malook — legend and glaciers.</p><span class="city-tag">Lakes &amp; Glaciers</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 4: EXPERIENCES ==================== -->
+<section id="experiences">
+  <p class="section-label reveal">What Awaits You</p>
+  <h2 class="section-title reveal delay-1">Experiences like<br><em>nowhere else</em></h2>
+  <div class="exp-grid">
+    <div class="exp-card large" data-aos="fade-up"><img src="pictures/mountaintrekking.png" alt="Trekking" /><div class="exp-card-overlay"></div><div class="exp-card-body"><div class="exp-card-icon">⛰️</div><h3 class="exp-card-title">Mountain Trekking &amp; Climbing</h3><p class="exp-card-text">Six of fourteen 8,000m peaks. K2 Base Camp — 166km of raw wilderness.</p></div></div>
+    <div class="exp-card medium" data-aos="fade-up"><img src="pictures/m.png" alt="Ruins" /><div class="exp-card-overlay"></div><div class="exp-card-body"><div class="exp-card-icon">🏛️</div><h3 class="exp-card-title">Ancient Civilizations</h3><p class="exp-card-text">Walk the streets of Mohenjo-daro, 2500 BCE.</p></div></div>
+    <div class="exp-card medium" data-aos="fade-up"><img src="pictures/basNT.png" alt="Culture" /><div class="exp-card-overlay"></div><div class="exp-card-body"><div class="exp-card-icon">🌸</div><h3 class="exp-card-title">Culture &amp; Festivals</h3><p class="exp-card-text">Basant kite festivals to Gilgit polo — spectacles of joy.</p></div></div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 5: ADVENTURES (NEW) ==================== -->
+<section id="adventures">
+  <p class="section-label reveal" style="justify-content:center">Seek Thrills</p>
+  <h2 class="section-title reveal delay-1" style="text-align:center">Unforgettable<br><em>adventures</em></h2>
+  <div class="adventure-grid">
+    <div class="adventure-card magnetic" data-aos="fade-up">
+      <div class="adventure-icon">🏔️</div>
+      <h3>Mountaineering</h3>
+      <p>Climb K2, Nanga Parbat, Broad Peak — 5 of the world's 14 highest summits</p>
+    </div>
+    <div class="adventure-card magnetic" data-aos="fade-up">
+      <div class="adventure-icon">🚣</div>
+      <h3>White Water Rafting</h3>
+      <p>Conquer the rapids of the Indus, Kunhar, and Swat rivers</p>
+    </div>
+    <div class="adventure-card magnetic" data-aos="fade-up">
+      <div class="adventure-icon">🪂</div>
+      <h3>Paragliding</h3>
+      <p>Soar over Hunza Valley and Chitral with Himalayan panoramas</p>
+    </div>
+    <div class="adventure-card magnetic" data-aos="fade-up">
+      <div class="adventure-icon">🏕️</div>
+      <h3>Camping</h3>
+      <p>Sleep under the stars at Deosai, Fairy Meadows, and Ratti Gali</p>
+    </div>
+    <div class="adventure-card magnetic" data-aos="fade-up">
+      <div class="adventure-icon">🎿</div>
+      <h3>Skiing</h3>
+      <p>Hit the slopes at Malam Jabba and Naltar — Pakistan's ski resorts</p>
+    </div>
+    <div class="adventure-card magnetic" data-aos="fade-up">
+      <div class="adventure-icon">🏍️</div>
+      <h3>KKH Road Trip</h3>
+      <p>1,300km on the world's highest paved international road</p>
+    </div>
+  </div>
+</section>
+
+<!-- Divider -->
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-diamond">&#9671;</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ==================== SECTION 6: FEATURED PLACES ==================== -->
+<section id="featured">
+  <p class="section-label reveal">Must-See Places</p>
+  <h2 class="section-title reveal delay-1">Icons of<br><em>Pakistan</em></h2>
+  <div class="featured-grid">
+    <div class="place-card" data-aos="fade-up"><div class="place-card-img-wrap"><img src="pictures/badshahi-mosque.png" alt="Badshahi Mosque" /></div><p class="place-region">Lahore, Punjab</p><h3 class="place-name">Badshahi Mosque</h3><p class="place-desc">Built 1671 — one of the largest mosques in the world.</p><a href="#cities" class="place-link">Explore Lahore</a></div>
+    <div class="place-card" data-aos="fade-up"><div class="place-card-img-wrap"><img src="pictures/attabadlake3.png" alt="Attabad Lake" /></div><p class="place-region">Hunza, Gilgit-Baltistan</p><h3 class="place-name">Attabad Lake</h3><p class="place-desc">Turquoise, 21km along the Karakoram Highway.</p><a href="#cities" class="place-link">Explore Hunza</a></div>
+    <div class="place-card" data-aos="fade-up"><div class="place-card-img-wrap"><img src="pictures/Saif-Ul-Malook-Lake-Pakistan-1.png" alt="Lake Saif ul Malook" /></div><p class="place-region">Naran, KPK</p><h3 class="place-name">Lake Saif ul Malook</h3><p class="place-desc">At 3,224m — Pakistan's most beloved folk legend.</p><a href="#cities" class="place-link">Explore Naran</a></div>
+    <div class="place-card" data-aos="fade-up"><div class="place-card-img-wrap"><img src="pictures/Deosai-Nationalpark.png" alt="Deosai" /></div><p class="place-region">Skardu, Gilgit-Baltistan</p><h3 class="place-name">Deosai National Park</h3><p class="place-desc">"Land of Giants" — second highest plateau at 4,114m.</p><a href="#cities" class="place-link">Explore Skardu</a></div>
+    <div class="place-card" data-aos="fade-up"><div class="place-card-img-wrap"><img src="pictures/mohengdaro.png" alt="Mohenjo-daro" /></div><p class="place-region">Sindh Province</p><h3 class="place-name">Mohenjo-daro</h3><p class="place-desc">Built 2500 BCE — first planned city in human history.</p><a href="#cities" class="place-link">Explore Sindh</a></div>
+    <div class="place-card" data-aos="fade-up"><div class="place-card-img-wrap"><img src="pictures/faisalmasjid1.png" alt="Faisal Mosque" /></div><p class="place-region">Islamabad</p><h3 class="place-name">Faisal Mosque</h3><p class="place-desc">Bold modernist vision — largest mosque in South Asia.</p><a href="#cities" class="place-link">Explore Islamabad</a></div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 7: QUOTE ==================== -->
+<section id="quote-section">
+  <div class="quote-bg"></div>
+  <div class="quote-content">
+    <span class="quote-mark reveal">"</span>
+    <blockquote class="quote-text reveal delay-1">Pakistan is the most beautiful country I have ever visited — its mountains make the Alps look like foothills.</blockquote>
+    <p class="quote-attribution reveal delay-2">— Sir Edmund Hillary, First to Summit Everest</p>
+  </div>
+</section>
+
+<!-- ==================== SECTION 8: PAKISTAN MAP ==================== -->
+<section id="pakistan-map">
+  <div class="map-section-header">
+    <p class="section-label reveal" style="justify-content:center">Explore Regions</p>
+    <h2 class="section-title reveal delay-1" style="text-align:center">Interactive<br><em>Map</em></h2>
+    <p class="map-subtitle reveal delay-2">Hover over each province to discover Pakistan's diverse regions</p>
+  </div>
+  <div class="map-wrapper">
+    <div class="map-container">
+      <div class="map-tooltip" id="map-tooltip"></div>
+      <svg id="pakistan-svg-map"></svg>
+    </div>
+    <div class="map-legend">
+      <div class="legend-item"><span class="legend-dot" style="background:#C9A84C"></span>Punjab</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#2D8F6A"></span>Sindh</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#1A5C45"></span>Balochistan</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#3DA87A"></span>KPK</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#5ABF8F"></span>Gilgit-Baltistan</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#7ACF9F"></span>Azad Kashmir</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 9: BY THE NUMBERS ==================== -->
+<section id="by-numbers">
+  <div class="numbers-bg-text">PAKISTAN</div>
+  <p class="section-label reveal" style="justify-content:center">Pakistan By The Numbers</p>
+  <h2 class="section-title reveal delay-1" style="text-align:center">A Nation of<br><em>extraordinary scale</em></h2>
+  <div class="numbers-grid">
+    <div class="number-card" data-aos="fade-up">
+      <div class="number-value" data-val="8611" data-suffix="m">0m</div>
+      <div class="number-divider"></div>
+      <h4 class="number-label">K2 — Second Tallest Peak</h4>
+      <p class="number-detail">The "Savage Mountain" — world's most challenging climb</p>
+    </div>
+    <div class="number-card" data-aos="fade-up">
+      <div class="number-value" data-val="7253" data-suffix="">0</div>
+      <div class="number-divider"></div>
+      <h4 class="number-label">Glaciers</h4>
+      <p class="number-detail">More glacial ice than anywhere outside polar regions</p>
+    </div>
+    <div class="number-card" data-aos="fade-up">
+      <div class="number-value" data-val="1300" data-suffix="km">0km</div>
+      <div class="number-divider"></div>
+      <h4 class="number-label">Karakoram Highway</h4>
+      <p class="number-detail">Highest paved road connecting Pakistan to China</p>
+    </div>
+    <div class="number-card" data-aos="fade-up">
+      <div class="number-value" data-val="255" data-suffix="M">0M</div>
+      <div class="number-divider"></div>
+      <h4 class="number-label">Population</h4>
+      <p class="number-detail">5th most populous — boundless diversity</p>
+    </div>
+    <div class="number-card" data-aos="fade-up">
+      <div class="number-value" data-val="6" data-suffix="">0</div>
+      <div class="number-divider"></div>
+      <h4 class="number-label">UNESCO Heritage Sites</h4>
+      <p class="number-detail">From Mohenjo-daro to Taxila — 5,000 years</p>
+    </div>
+    <div class="number-card" data-aos="fade-up">
+      <div class="number-value" data-val="75" data-suffix="+">0+</div>
+      <div class="number-divider"></div>
+      <h4 class="number-label">Languages Spoken</h4>
+      <p class="number-detail">Urdu, Punjabi, Pashto, Sindhi, Balochi...</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 10: CUISINE (NEW) ==================== -->
+<section id="cuisine">
+  <p class="section-label reveal" style="justify-content:center">A Feast for the Senses</p>
+  <h2 class="section-title reveal delay-1" style="text-align:center">Taste of<br><em>Pakistan</em></h2>
+  <div class="cuisine-grid">
+    <div class="cuisine-card" data-aos="fade-up">
+      <div class="cuisine-img"><img src="pictures/biryani.png" alt="Biryani" /></div>
+      <div class="cuisine-body">
+        <h3>Biryani</h3>
+        <p>Layers of fragrant basmati rice, tender meat, and aromatic spices — Pakistan's crown jewel of cuisine, perfected over centuries.</p>
+        <span class="cuisine-region">Karachi &amp; Sindh</span>
+      </div>
+    </div>
+    <div class="cuisine-card" data-aos="fade-up">
+      <div class="cuisine-img"><img src="pictures/Nihari.png" alt="Nihari" /></div>
+      <div class="cuisine-body">
+        <h3>Nihari</h3>
+        <p>Slow-cooked overnight stew of beef shank in rich bone-marrow gravy, topped with ginger and fresh chilies. Lahore's legendary dawn meal.</p>
+        <span class="cuisine-region">Lahore &amp; Punjab</span>
+      </div>
+    </div>
+    <div class="cuisine-card" data-aos="fade-up">
+      <div class="cuisine-img"><img src="pictures/ChapliKebabs.png" alt="Chapli Kebab" /></div>
+      <div class="cuisine-body">
+        <h3>Chapli Kebab</h3>
+        <p>Spiced minced meat patties from the frontier. Crispy on the outside, juicy within — a Pashtun masterpiece.</p>
+        <span class="cuisine-region">Peshawar &amp; KPK</span>
+      </div>
+    </div>
+    <div class="cuisine-card" data-aos="fade-up">
+      <div class="cuisine-img"><img src="pictures/Halwa-Puri.png" alt="Halwa Puri" /></div>
+      <div class="cuisine-body">
+        <h3>Halwa Puri</h3>
+        <p>The quintessential Pakistani breakfast — golden deep-fried bread with sweet semolina halwa and spiced chickpea curry.</p>
+        <span class="cuisine-region">All of Pakistan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Divider -->
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-diamond">&#9671;</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ==================== SECTION 11: SEASONS ==================== -->
+<section id="seasons">
+  <p class="section-label reveal">Travel Planning</p>
+  <h2 class="section-title reveal delay-1">Best time to<br><em>visit Pakistan</em></h2>
+  <div class="seasons-grid">
+    <div class="season-card" data-aos="fade-up" data-aos-delay="0">
+      <span class="season-icon">🌸</span>
+      <h3 class="season-name">Spring</h3>
+      <p class="season-months">March — May</p>
+      <p class="season-desc">Cherry blossoms in Hunza, wildflowers, perfect trekking weather.</p>
+      <div class="season-best"><strong>Best For</strong> Hunza blossoms, cultural tours</div>
+    </div>
+    <div class="season-card" data-aos="fade-up" data-aos-delay="100">
+      <span class="season-icon">☀️</span>
+      <h3 class="season-name">Summer</h3>
+      <p class="season-months">June — August</p>
+      <p class="season-desc">Peak trekking for K2, Fairy Meadows, Deosai. North is cool.</p>
+      <div class="season-best"><strong>Best For</strong> K2 base camp, Deosai, Skardu</div>
+    </div>
+    <div class="season-card" data-aos="fade-up" data-aos-delay="200">
+      <span class="season-icon">🍂</span>
+      <h3 class="season-name">Autumn</h3>
+      <p class="season-months">September — November</p>
+      <p class="season-desc">Most photogenic — Hunza trees blaze gold. Clear skies.</p>
+      <div class="season-best"><strong>Best For</strong> Photography, all regions</div>
+    </div>
+    <div class="season-card" data-aos="fade-up" data-aos-delay="300">
+      <span class="season-icon">❄️</span>
+      <h3 class="season-name">Winter</h3>
+      <p class="season-months">December — February</p>
+      <p class="season-desc">South is pleasant, north is magical snow. Malam Jabba skiing.</p>
+      <div class="season-best"><strong>Best For</strong> Southern Pakistan, skiing</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 12: TIPS ==================== -->
+<section id="tips">
+  <div class="tips-inner">
+    <div class="tips-left-col">
+      <p class="section-label reveal">Travel Smart</p>
+      <h2 class="section-title reveal delay-1">Essential<br><em>tips</em></h2>
+      <p class="intro-text reveal delay-2" style="margin-top:2rem;">Pakistan is one of the most underrated travel destinations. A few essentials will make your journey seamless.</p>
+    </div>
+    <div class="tips-list">
+      <div class="tip-item" data-aos="fade-up">
+        <div class="tip-num">01</div>
+        <h4 class="tip-title">Visa Requirements</h4>
+        <p class="tip-text">50+ countries can get e-visa online. Apply 2 weeks before via NADRA portal.</p>
+      </div>
+      <div class="tip-item" data-aos="fade-up">
+        <div class="tip-num">02</div>
+        <h4 class="tip-title">Best Airports</h4>
+        <p class="tip-text">Islamabad (ISB) or Lahore (LHE) for north. Karachi (KHI) for south. Domestic to Skardu.</p>
+      </div>
+      <div class="tip-item" data-aos="fade-up">
+        <div class="tip-num">03</div>
+        <h4 class="tip-title">Currency &amp; Money</h4>
+        <p class="tip-text">Pakistani Rupee (PKR). ATMs in cities. Carry cash for northern areas. USD accepted in tourist spots.</p>
+      </div>
+      <div class="tip-item" data-aos="fade-up">
+        <div class="tip-num">04</div>
+        <h4 class="tip-title">Dress &amp; Customs</h4>
+        <p class="tip-text">Dress modestly. Remove shoes in mosques. Hospitality is sacred; always accept offered tea.</p>
+      </div>
+      <div class="tip-item" data-aos="fade-up">
+        <div class="tip-num">05</div>
+        <h4 class="tip-title">High Altitude Safety</h4>
+        <p class="tip-text">Acclimatize 2 days at base altitude. Carry Diamox. Know altitude sickness signs.</p>
+      </div>
+      <div class="tip-item" data-aos="fade-up">
+        <div class="tip-num">06</div>
+        <h4 class="tip-title">Getting Around</h4>
+        <p class="tip-text">KKH is one of the world's great road trips. Hire local guide/driver for northern areas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 13: TESTIMONIALS ==================== -->
+<section id="testimonials">
+  <p class="section-label reveal" style="justify-content:center">Traveler Stories</p>
+  <h2 class="section-title reveal delay-1" style="text-align:center">What travelers<br><em>say</em></h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card" data-aos="fade-up">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"I've traveled 60+ countries and nothing prepared me for Hunza Valley. The cherry blossoms, the mountains, the kindest people I've ever met."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">E</div>
+        <div>
+          <p class="testimonial-name">Eva Zu Beck</p>
+          <p class="testimonial-origin">Travel Filmmaker, Poland</p>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card" data-aos="fade-up">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"K2 Base Camp trek was the most intense and rewarding experience of my life. Pakistan's mountains are on another level."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">A</div>
+        <div>
+          <p class="testimonial-name">Alex Reynolds</p>
+          <p class="testimonial-origin">Adventure Photographer, UK</p>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card" data-aos="fade-up">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Lahore's food alone is worth the trip. From siri paye at dawn to rooftop dinners — every meal was a revelation."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">M</div>
+        <div>
+          <p class="testimonial-name">Mark Wiens</p>
+          <p class="testimonial-origin">Food Explorer, USA</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 14: GALLERY ==================== -->
+<section id="gallery">
+  <div class="gallery-title">
+    <p class="section-label reveal" style="justify-content:center;margin-bottom:1rem;">Visual Journey</p>
+    <h2 class="section-title reveal delay-1" style="text-align:center;">Pakistan in<br><em>frames</em></h2>
+  </div>
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <img class="marquee-img" data-aos="fade-up" src="pictures/DJI_0160.png" alt="Lahore" />
+      <img class="marquee-img" data-aos="fade-up" src="pictures/saif1.jpeg" alt="Hunza" />
+      <img class="marquee-img" data-aos="fade-up" src="pictures/saif2.jpeg" alt="Mountains" />
+      <img class="marquee-img" data-aos="fade-up" src="pictures/attabad lake.png" alt="Peaks" />
+      <img class="marquee-img" data-aos="fade-up" src="pictures/Deosai-Nationalpark.png" alt="Ruins" />
+      <img class="marquee-img" data-aos="fade-up" src="pictures/frame2.jpg" alt="Islamabad" />
+      <img class="marquee-img" data-aos="fade-up" src="pictures/hunza.jpg" alt="Landscape" />
+      <img class="marquee-img" data-aos="fade-up" src="pictures/faisalmasjid1.png" alt="Valley" />
+      <img class="marquee-img" data-aos="fade-up" src="pictures/skerdu.jpg" alt="Mosque" />
+      <img class="marquee-img" data-aos="fade-up" src="pictures/mohengdaro.png" alt="Swat" />
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#hero" class="nav-logo">Discover <span>Pakistan</span></a>
+      <p class="footer-tagline">"The most hospitable people on earth await you in the most spectacular land on earth."</p>
+      <p class="pk-flag">🇵🇰 Pakistan Tourism</p>
+    </div>
+    <div>
+      <h4 class="footer-heading">Destinations</h4>
+      <ul class="footer-links">
+        <li><a href="#cities">Lahore</a></li>
+        <li><a href="#cities">Hunza Valley</a></li>
+        <li><a href="#cities">Islamabad</a></li>
+        <li><a href="#cities">Skardu</a></li>
+        <li><a href="#cities">Swat Valley</a></li>
+        <li><a href="#cities">Peshawar</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="footer-heading">Experiences</h4>
+      <ul class="footer-links">
+        <li><a href="#experiences">Mountain Trekking</a></li>
+        <li><a href="#experiences">Cultural Heritage</a></li>
+        <li><a href="#adventures">Paragliding</a></li>
+        <li><a href="#adventures">White Water Rafting</a></li>
+        <li><a href="#cuisine">Food Trails</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="footer-heading">Travel Info</h4>
+      <ul class="footer-links">
+        <li><a href="#tips">Visa Requirements</a></li>
+        <li><a href="#seasons">Best Time to Visit</a></li>
+        <li><a href="#tips">Getting Around</a></li>
+        <li><a href="#tips">Currency</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 Discover Pakistan. Crafted with love.</p>
+    <p class="made-by">Designed & Developed by <span class="maker-name">Nabeel Sikandar</span></p>
+    <div class="footer-socials">
+      <a href="#">Instagram</a>
+      <a href="#">YouTube</a>
+      <a href="#">Facebook</a>
+      <a href="#">TikTok</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts loaded at end of body for best performance -->
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.umd.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/2.0.8/vanilla-tilt.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="js/pak-geo.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
