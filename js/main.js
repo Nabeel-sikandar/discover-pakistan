@@ -27,6 +27,7 @@
   initMagneticButtons();
   initPakistanMap();
   init3DHero();
+  initCardReveals();
 
   // ===== SMOOTH SCROLL (LENIS) =====
   var lenisInstance = null;
@@ -199,25 +200,53 @@
     var hamburger = document.querySelector('.hamburger');
     var navLinks = document.querySelector('.nav-links');
     var lastScroll = 0;
+    var isMobile = window.innerWidth < 769;
 
+    // Update on resize
+    window.addEventListener('resize', function() {
+      isMobile = window.innerWidth < 769;
+      if (!isMobile && navLinks) {
+        navLinks.classList.remove('open');
+        if (hamburger) hamburger.classList.remove('active');
+        document.body.style.overflow = '';
+        if (nav) nav.style.transform = '';
+      }
+    });
+
+    // Scroll behavior
     window.addEventListener('scroll', function() {
       var st = window.pageYOffset;
       if (nav) {
         if (st > 80) nav.classList.add('scrolled');
         else nav.classList.remove('scrolled');
-        if (st > lastScroll && st > 400) nav.style.transform = 'translateY(-100%)';
-        else nav.style.transform = 'translateY(0)';
+
+        // Hide/show nav on scroll — ONLY on desktop
+        if (!isMobile) {
+          if (st > lastScroll && st > 400) nav.style.transform = 'translateY(-100%)';
+          else nav.style.transform = 'translateY(0)';
+        }
       }
       lastScroll = st;
     });
 
+    // Mobile hamburger toggle
     if (hamburger && navLinks) {
       hamburger.addEventListener('click', function() {
         hamburger.classList.toggle('active');
         navLinks.classList.toggle('open');
+
+        // Lock body scroll when menu is open
+        if (navLinks.classList.contains('open')) {
+          document.body.style.overflow = 'hidden';
+          if (lenisInstance) lenisInstance.stop();
+        } else {
+          document.body.style.overflow = '';
+          if (lenisInstance) lenisInstance.start();
+        }
       });
     }
 
+    // Smooth anchor clicks
     document.querySelectorAll('a[href^="#"]').forEach(function(a) {
       a.addEventListener('click', function(e) {
         e.preventDefault();
@@ -226,8 +255,11 @@
           if (lenisInstance) lenisInstance.scrollTo(target, { offset: -80, duration: 1.5 });
           else target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+        // Close mobile menu on link click
         if (navLinks) navLinks.classList.remove('open');
         if (hamburger) hamburger.classList.remove('active');
+        document.body.style.overflow = '';
+        if (lenisInstance) lenisInstance.start();
       });
     });
   }
@@ -262,14 +294,10 @@
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
     gsap.registerPlugin(ScrollTrigger);
 
-    // Hero parallax - multi-layer left layout
+    // Hero parallax - multi-layer
     gsap.to('.hero-content', {
       scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true },
-      y: 100, opacity: 0
-    });
-    gsap.to('.hero-right', {
-      scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true },
-      y: 150, opacity: 0
+      y: 120, opacity: 0
     });
     gsap.to('.hero-bg-front', {
       scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true },
@@ -283,13 +311,9 @@
       scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true },
       opacity: 0, scale: 0.95
     });
-    gsap.to('.hero-vertical-text', {
-      scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true },
-      y: -80, opacity: 0
-    });
-    gsap.to('.hero-orb', {
-      scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true },
-      y: -100, scale: 0.5, opacity: 0
+    gsap.to('.hero-stats-bar', {
+      scrollTrigger: { trigger: '#hero', start: 'top top', end: '60% top', scrub: true },
+      y: 50, opacity: 0
     });
 
     // Background text parallax (decorative only)
@@ -301,7 +325,37 @@
     }
   }
 
-  // Card visibility now handled by AOS library (data-aos attributes in HTML)
+  // ===== RELIABLE CARD REVEAL (IntersectionObserver — never leaves cards invisible) =====
+  function initCardReveals() {
+    var cards = document.querySelectorAll('.card-reveal');
+    if (!cards.length) return;
+
+    // Fallback: if IntersectionObserver not supported, show everything
+    if (!('IntersectionObserver' in window)) {
+      cards.forEach(function(c) { c.classList.add('card-visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('card-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+
+    cards.forEach(function(card) { observer.observe(card); });
+
+    // Safety net: after 3 seconds, force-show any cards still hidden
+    setTimeout(function() {
+      cards.forEach(function(c) {
+        if (!c.classList.contains('card-visible')) {
+          c.classList.add('card-visible');
+        }
+      });
+    }, 3000);
+  }
 
   // ===== COUNTER ANIMATIONS =====
   function initCounterAnimations() {
