@@ -294,14 +294,14 @@ nav.scrolled {
 }
 
 .hero-bg-back {
-  background-image: url('https://www.thenews.com.pk/assets/uploads/akhbar/2024-02-04/1154485_4499678_ISB_akhbar.jpg');
+  background-image: url('../pictures/wallpaperflare.com_wallpaper.jpg');
   filter: blur(3px) saturate(0.8);
   transform: scale(1.15);
   animation: heroZoom 25s ease-in-out infinite alternate;
 }
 
 .hero-bg-front {
-  background-image: url('https://www.thenews.com.pk/assets/uploads/akhbar/2024-02-04/1154485_4499678_ISB_akhbar.jpg');
+  background-image: url('../pictures/wallpaperflare.com_wallpaper.jpg');
   background-size: cover;
   transform: scale(1.05);
   animation: heroZoom2 20s ease-in-out infinite alternate;
